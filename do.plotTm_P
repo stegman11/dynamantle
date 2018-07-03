@@ -1,0 +1,20 @@
+plotxy <<!
+frame on
+
+char .13
+affine -1 0 1 0
+mode 20 5 4
+file OUT_back_1kprofile
+skip 1
+read
+
+xlab Pressure (negative)
+ylab T_m
+
+xlim 4 3480 3490
+ylim 3
+plot 2.5 5
+stop
+!
+mv mypost tm_of_p.ps
+open tm_of_p.ps

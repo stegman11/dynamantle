@@ -1,0 +1,7 @@
+rm -f OUT_back_conc
+rm -f OUT_back_diagnostics
+rm -f OUT_back_energy
+rm -f OUT_back_entropy
+rm -f OUT_back_icb
+rm -f OUT_back_profiles
+rm -f fort.546

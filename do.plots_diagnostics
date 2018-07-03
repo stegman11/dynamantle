@@ -1,0 +1,158 @@
+plotxy <<!
+frame on
+frame -xnum
+char .13
+title DIAGNOSTICS:  Back (black) Forward (red)
+
+mode 20 1 2
+affine 1 0 .001 0
+file OUT_back_diagnostics
+skip 1
+read
+color red
+mode 20 1 2
+affine 1 0 .001 0
+file OUT_forw_diagnostics
+skip 1
+read
+color black
+
+ylab T_c (e3)
+
+xlim 3
+ylim 1.25
+plot 1 9
+
+
+mode 20 1 3
+affine 1 0 1 0
+title 
+file OUT_back_diagnostics
+skip 1
+read
+color red
+mode 20 1 3
+affine 1 0 1 0
+file OUT_forw_diagnostics
+skip 1
+read
+color black
+
+ylab dTc/dt
+plot 0 -1.5
+
+mode 20 1 4
+affine 1 0 .00001 0
+title 
+file OUT_back_diagnostics
+skip 1
+read
+color red
+mode 20 1 4
+affine 1 0 .00001 0
+file OUT_forw_diagnostics
+skip 1
+read
+color black
+
+ylab r_ic (e5) 
+plot 0 -1.5
+
+frame +xnum
+mode 20 1 5
+affine 1 0 .000001 0
+title 
+file OUT_back_diagnostics
+skip 1
+read
+color red
+mode 20 1 5
+affine 1 0 .000001 0
+file OUT_forw_diagnostics
+skip 1
+read
+color black
+
+xlab time
+ylab r_s (e6)
+plot 0 -1.5
+
+frame -xnum
+mode 20 1 6
+affine 1 0 .0000001 0
+title 
+file OUT_back_diagnostics
+skip 1
+read
+color red
+mode 20 1 6
+affine 1 0 .0000001 0
+file OUT_forw_diagnostics
+skip 1
+read
+color black
+
+xlab
+ylab dr_ic/dt (e7)
+plot 4.25 4.5
+
+mode 20 1 7
+affine 1 0 100 0
+title 
+file OUT_back_diagnostics
+skip 1
+read
+color red
+mode 20 1 7
+affine 1 0 100 0
+file OUT_forw_diagnostics
+skip 1
+read
+color black
+
+ylab conc (e-2)
+plot 0 -1.5
+
+mode 20 1 8
+affine 1 0 1e-24 0
+title 
+file OUT_back_diagnostics
+skip 1
+read
+color red
+mode 20 1 8
+affine 1 0 1e-24 0
+file OUT_forw_diagnostics
+skip 1
+read
+color black
+
+ylab Mc (e24)
+plot 0 -1.5
+
+frame +xnum
+mode 20 1 9
+affine 1 0 1e-24 0
+title 
+file OUT_back_diagnostics
+skip 1
+read
+color red
+mode 20 1 9
+affine 1 0 1e-24 0
+file OUT_forw_diagnostics
+skip 1
+read
+color black
+
+xlab time
+ylab Moc (e24)
+plot 0 -1.5
+
+
+
+
+stop
+!
+mv mypost eveplots.ps
+open eveplots.ps

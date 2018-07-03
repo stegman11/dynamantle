@@ -1,0 +1,200 @@
+kols 1 < OUT_back_energy > tmptime
+paste tmptime OUT_back_icb > OUT_back_icb_t
+rm tmptime
+kols 1 < OUT_forw_energy > tmptime
+paste tmptime OUT_forw_icb > OUT_forw_icb_t
+rm tmptime
+
+plotxy <<!
+frame on
+frame -xnum
+char .13
+title        ICB:  Back (black)  Forward (red)
+
+mode 20 1 2
+affine 1 0 1e9 0
+file OUT_back_icb_t
+skip 1
+read
+color red
+mode 20 1 2
+affine 1 0 1e9 0
+file OUT_forw_icb_t
+skip 1
+read
+color black
+
+ylab dTa/dP(ri) (e-9)
+
+xlim 3
+ylim 1.25
+plot 1 9
+
+
+mode 20 1 3
+affine 1 0 1e9 0
+title 
+file OUT_back_icb_t
+skip 1
+read
+color red
+mode 20 1 3
+affine 1 0 1e9 0
+file OUT_forw_icb_t
+skip 1
+read
+color black
+
+ylab dTm/dP(ri) (e-9)
+plot 0 -1.5
+
+mode 20 1 4
+affine 1 0 1e-3 0
+title 
+file OUT_back_icb_t
+skip 1
+read
+color red
+mode 20 1 4
+affine 1 0 1e-3 0
+file OUT_forw_icb_t
+skip 1
+read
+color black
+
+ylab rho(ri) (e3) 
+plot 0 -1.5
+
+ frame +xnum
+mode 20 1 5
+affine 1 0 1e-3 0
+title 
+file OUT_back_icb_t
+skip 1
+read
+color red
+mode 20 1 5
+affine 1 0 1e-3 0
+file OUT_forw_icb_t
+skip 1
+read
+color black
+
+ylab T(ri) (e3)
+plot 0 -1.5
+
+frame -xnum
+mode 20 1 6
+affine 1 0 1 0
+title 
+file OUT_back_icb_t
+skip 1
+read
+color red
+mode 20 1 6
+affine 1 0 1 0
+file OUT_forw_icb_t
+skip 1
+read
+color black
+
+ylab g(ri)
+plot 0 -1.5
+ plot 4.25 4.5
+
+frame +xnum
+mode 20 1 7
+affine 1 0 1e-12 0
+title 
+file OUT_back_icb_t
+skip 1
+read
+color red
+mode 20 1 7
+affine 1 0 1e-12 0
+file OUT_forw_icb_t
+skip 1
+read
+color black
+
+xlab time
+ylab p(ri) (e12)
+plot 0 -1.5
+
+frame -xnum
+mode 20 1 8
+affine 1 0 1e-3 0
+title 
+file OUT_back_icb_t
+skip 1
+read
+color red
+mode 20 1 8
+affine 1 0 1e-3 0
+file OUT_forw_icb_t
+skip 1
+read
+color black
+
+xlab
+ylab Cr (e3)
+plot 4.25 7.5
+
+mode 20 1 9
+affine 1 0 1e3 0
+title 
+file OUT_back_icb_t
+skip 1
+read
+color red
+mode 20 1 9
+affine 1 0 1e3 0
+file OUT_forw_icb_t
+skip 1
+read
+color black
+
+ylab dTa/dr (ri) (e-3)
+plot 0 -1.5
+
+mode 20 1 10
+affine 1 0 1e3 0
+title 
+file OUT_back_icb_t
+skip 1
+read
+color red
+mode 20 1 10
+affine 1 0 1e3 0
+file OUT_forw_icb_t
+skip 1
+read
+color black
+
+ylab dTm/dr(ri) (e-3)
+plot 0 -1.5
+
+frame +xnum
+mode 20 1 11
+affine 1 0 1e-3 0
+title 
+file OUT_back_icb_t
+skip 1
+read
+color red
+mode 20 1 11
+affine 1 0 1e-3 0
+file OUT_forw_icb_t
+skip 1
+read
+color black
+
+xlab time
+ylab Tcen (e3)
+plot 0 -1.5
+
+
+stop
+!
+mv mypost icbplots.ps
+open icbplots.ps

@@ -1,0 +1,33 @@
+plotxy <<!
+
+frame on
+mode 20 1 5
+file OUT_back_profiles
+skip 1
+read 100002
+skip 2
+read 100002
+skip 2
+read 100002
+skip 2
+read 100002
+skip 2
+read 100002
+skip 2
+read 100002
+skip 2
+read 100002
+skip 2
+read 100002
+skip 2
+read 100002
+skip 2
+read 100002
+skip 2
+xlim 4
+ylim 3
+plot
+stop
+!
+mv mypost mypost.ps
+open mypost.ps

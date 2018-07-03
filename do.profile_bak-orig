@@ -1,0 +1,135 @@
+#! /bin/csh
+
+set n = 1
+set nprofiles = 2
+set mydt = 450
+
+
+@ nmn = $nprofiles - $n
+@ nmo = $n - 1
+@ nskipback = 204 * $nmo
+@ nskipforw = 204 * $nmn
+@ ageback= $nmo * $mydt
+@ ageforw = 4500 - $nmn * $mydt
+
+echo $mydt $nmn $nmo $nskipback $nskipforw $ageback $ageforw
+
+plotxy <<!
+frame on
+frame -xnum
+char .13
+title        Profiles:  Age $ageback Myr ago
+
+mode 20 1 2
+affine 1e-6 0 1e-3 0
+file OUT_back_profiles
+skip 1
+skip $nskipback
+read 202
+color black
+
+ylab T (e3)
+
+xlim 3
+ylim 1.25
+plot 1 9
+
+
+mode 20 1 3
+affine 1e-6 0 1e6 0
+title 
+file OUT_back_profiles
+skip 1
+skip $nskipback
+read 202
+color black
+
+ylab dTa/dr(ri) (e-6)
+plot 0 -1.5
+
+mode 20 1 4
+affine 1e-6 0 1e-3 0
+title 
+file OUT_back_profiles
+skip 1
+skip $nskipback
+read 202
+color black
+
+ylab T_m (e3) 
+plot 0 -1.5
+
+ frame +xnum
+mode 20 1 5
+affine 1e-6 0 1e-12 0
+title 
+file OUT_back_profiles
+skip 1
+skip $nskipback
+read 202
+color black
+
+ylab P (e12)
+plot 0 -1.5
+
+frame -xnum
+mode 20 1 6
+affine 1e-6 0 1e-3 0
+title 
+file OUT_back_profiles
+skip 1
+skip $nskipback
+read 202
+color black
+
+ylab rho (e3)
+plot 0 -1.5
+ plot 4.25 4.5
+
+frame +xnum
+mode 20 1 7
+affine 1e-6 0 1 0
+title 
+file OUT_back_profiles
+skip 1
+skip $nskipback
+read 202
+color black
+
+xlab radius
+ylab g
+plot 0 -1.5
+
+frame -xnum
+mode 20 1 8
+affine 1e-6 0 1e-6 0
+title 
+file OUT_back_profiles
+skip 1
+skip $nskipback
+read 202
+color black
+
+xlab
+ylab psi (e6)
+plot 4.25 7.5
+
+frame +xnum
+mode 20 1 9
+affine 1e-6 0 1 0
+title 
+file OUT_back_profiles
+skip 1
+skip $nskipback
+read 202
+color black
+
+xlab radius
+ylab k
+plot 0 -1.5
+
+
+stop
+!
+mv mypost profiles.ps
+open profiles.ps
